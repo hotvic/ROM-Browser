@@ -1,0 +1,4 @@
+[encoding: UTF-8]
+# UI Files
+[type: gettext/glade]data/ui/menu.ui.in
+[type: gettext/glade]data/ui/rbmw.ui.in
