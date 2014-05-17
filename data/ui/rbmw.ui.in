@@ -5,8 +5,6 @@
     <columns>
       <!-- column-name name -->
       <column type="guchar"/>
-      <!-- column-name type -->
-      <column type="gchar"/>
       <!-- column-name fileloc -->
       <column type="gchar"/>
       <!-- column-name tooltip -->
@@ -26,7 +24,6 @@
         <child>
           <object class="GtkMenuButton" id="gears">
             <property name="visible">True</property>
-            <property name="sensitive">True</property>
             <style>
               <class name="image-button"/>
             </style>
@@ -45,7 +42,6 @@
         <child>
           <object class="GtkToggleButton" id="search">
             <property name="visible">True</property>
-            <property name="sensitive">True</property>
             <style>
               <class name="image-button"/>
             </style>
@@ -65,6 +61,7 @@
     </child>
     <child>
       <object class="GtkBox">
+        <property name="orientation">vertical</property>
         <child>
           <object class="GtkSearchBar" id="searchbar">
             <property name="visible">True</property>
@@ -77,12 +74,42 @@
           </object>
         </child>
         <child>
+          <object class="GtkHeaderBar" id="header-filter">
+            <child>
+              <object class="GtkComboBoxText" id="cb-filter-type">
+                <items>
+                  <item translatable="yes" id="snes">SNES</item>
+                  <item translatable="yes" id="gbac">GBA/GBC</item>
+                  <item translatable="yes" id="psx">Playstation 1</item>
+                  <item translatable="yes" id="ps2">Playstation 2</item>
+                </items>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
           <object class="GtkTreeView" id="romsTreeView">
             <property name="model">romsListStore</property>
             <property name="search_column">1</property>
             <property name="tooltip_column">3</property>
+            <child>
+              <object class="GtkTreeViewColumn" id="column-name">
+                <property name="title" translatable="yes">Name</property>
+                <child>
+                  <object class="GtkCellRendererText" id="col-name-render"></object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="column-fileloc">
+                <property name="title" translatable="yes">File</property>
+                <child>
+                  <object class="GtkCellRendererText" id="col-fileloc-render"></object>
+                </child>
+              </object>
+            </child>
             <child internal-child="selection">
-              <object class="GtkTreeSelection" id="romsTreeView-selection"/>
+              <object class="GtkTreeSelection" id="romsTreeView-selection" />
             </child>
           </object>
         </child>

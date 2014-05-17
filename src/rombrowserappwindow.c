@@ -16,10 +16,10 @@ typedef struct _RomBrowserAppWindowPrivate RomBrowserAppWindowPrivate;
 
 struct _RomBrowserAppWindowPrivate
 {
-  GSettings *settings;
-  GtkWidget *gears;
-  GtkWidget *search;
-  GtkWidget *searchbar;
+  GSettings     *settings;
+  GtkMenuButton *gears;
+  GtkWidget     *search;
+  GtkWidget     *searchbar;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE(RomBrowserAppWindow, rombrowser_app_window, GTK_TYPE_APPLICATION_WINDOW);
@@ -41,7 +41,7 @@ search_text_changed (GtkEntry *entry)
 }
 
 const GActionEntry gearsaction[] = {
-  {"run_selected", NULL}
+  {"run-selected", NULL}
 };
 
 
@@ -55,7 +55,7 @@ rombrowser_app_window_init (RomBrowserAppWindow *win)
   priv = rombrowser_app_window_get_instance_private (win);
   gtk_widget_init_template (GTK_WIDGET (win));
   priv->settings =  g_settings_new ("org.hotvic.rombrowser.preferences.ui");
-
+  
   g_object_bind_property (priv->search, "active",
                           priv->searchbar, "search-mode-enabled",
                           G_BINDING_BIDIRECTIONAL
@@ -64,6 +64,10 @@ rombrowser_app_window_init (RomBrowserAppWindow *win)
   builder = gtk_builder_new_from_resource ("/org/hotvic/rombrowser/ui/menu.ui");
   gearsmenu = G_MENU_MODEL (gtk_builder_get_object (builder, "gearsmenu"));
   gtk_menu_button_set_menu_model (priv->gears, gearsmenu);
+
+  /* Actions */
+  g_action_map_add_action_entries (G_ACTION_MAP (win), gearsaction,
+                                   G_N_ELEMENTS (gearsaction), win);
 }
 
 static void

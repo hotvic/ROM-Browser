@@ -3,28 +3,6 @@
   <!-- interface-requires gtk+ 3.0 -->
   <menu id="appmenu">
     <section>
-      <attribute name="id">app-music-seek-section</attribute>
-      <item>
-        <attribute name="label" translatable="yes">_Next</attribute>
-        <attribute name="action">app.next</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">_Prev</attribute>
-        <attribute name="action">app.prev</attribute>
-      </item>
-    </section>
-    <section>
-      <attribute name="id">app-music-control-section</attribute>
-      <item>
-        <attribute name="label" translatable="yes">_Pause</attribute>
-        <attribute name="action">app.pause</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">_Stop</attribute>
-        <attribute name="action">app.stop</attribute>
-      </item>
-    </section>
-    <section>
       <attribute name="id">preferences-section</attribute>
       <item>
         <attribute name="label" translatable="yes">_Preferences</attribute>
@@ -45,9 +23,24 @@
   </menu>
   <menu id="gearsmenu">
     <section>
+      <attribute name="id">rom-section</attribute>
       <item>
         <attribute name="label" translatable="yes">Open Selected</attribute>
-        <attribute name="action" translatable="yes">open-selected</attribute>
+        <attribute name="action" translatable="yes">win.run-selected</attribute>
+      </item>
+    </section>
+    <section>
+      <attribute name="id">preferences-section</attribute>
+      <item>
+        <attribute name="label" translatable="yes">_Preferences</attribute>
+        <attribute name="action">app.prefs</attribute>
+      </item>
+    </section>
+    <section>
+      <attribute name="id">quit-section</attribute>
+      <item>
+        <attribute name="label" translatable="yes">_Quit</attribute>
+        <attribute name="action">app.quit</attribute>
       </item>
     </section>
   </menu>

@@ -4,8 +4,6 @@
     <child name="state" schema="org.hotvic.rombrowser.state" />
   </schema>
   <schema id="org.hotvic.rombrowser.preferences" path="/org/hotvic/rombrowser/preferences/" gettext-domain="@GETTEXT_DOMAIN@">
-    <child name="emulators" schema="org.hotvic.rombrowser.preferences.emulators" />
-    <child name="ui" schema="org.hotvic.rombrowser.preferences.ui" />
     <key name="only-one-instance" type="b">
       <default l10n="messages">true</default>
       <summary>Allow running of only one instance</summary>
@@ -13,6 +11,8 @@
         Allow running of only one instance
       </description>
     </key>
+    <child name="emulators" schema="org.hotvic.rombrowser.preferences.emulators" />
+    <child name="ui" schema="org.hotvic.rombrowser.preferences.ui" />
   </schema>
   <schema id="org.hotvic.rombrowser.preferences.emulators" path="/org/hotvic/rombrowser/preferences/emulators/" gettext-domain="@GETTEXT_DOMAIN@">
   </schema>
