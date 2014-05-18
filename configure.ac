@@ -39,6 +39,7 @@ AC_PATH_PROG(GLIB_COMPILE_RESOURCES, glib-compile-resources)
 
 AC_CONFIG_FILES(
   Makefile
+  data/org.hotvic.rombrowser.gschema.xml
   data/ui.gresource.xml
   data/ui/menu.ui
   data/ui/rbmw.ui

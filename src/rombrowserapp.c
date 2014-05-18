@@ -32,6 +32,7 @@
 struct _RomBrowserAppPrivate
 {
   RomBrowserSettings *settings;
+  GSettings *preferences;
 
   GMenuModel         *window_menu;
 };
@@ -173,18 +174,19 @@ rombrowser_app_startup (GApplication *application)
 static void
 rombrowser_app_activate (GApplication *application)
 {
-  GtkApplicationWindow *window = NULL;
-  GMenuModel *gearmenu;
+  RomBrowserAppWindow *window = NULL;
 
-  window = rombrowser_app_window_new (ROMBROWSER_APP (application));
+  
+  if (g_settings_get_boolean (ROMBROWSER_APP (application)->priv->preferences,
+                              ROMBROWSER_SETTINGS_ONE_INSTANCE))
+    window = ROMBROWSER_APP_WINDOW (gtk_application_get_active_window (GTK_APPLICATION (application)));
 
-  //gtk_application_add_window (GTK_APPLICATION(application),
-  //                            GTK_WINDOW(window));
+  if (window == NULL) {
+    window = rombrowser_app_window_new (ROMBROWSER_APP (application));
+    gtk_widget_show_all(GTK_WIDGET (window));
+  }
 
-  /* The gear nenu */
-  //gearmenu = G_MENU_MODEL (gtk_builder_get_object (builder, "gearmenu"));
-
-  gtk_widget_show_all(GTK_WIDGET (window));
+  gtk_window_present (GTK_WINDOW (window));
 }
 
 static void
@@ -215,6 +217,7 @@ static void
 rombrowser_app_init (RomBrowserApp *app)
 {
   app->priv = rombrowser_app_get_instance_private (app);
+  app->priv->preferences = g_settings_new ("org.hotvic.rombrowser.preferences");
 
   g_set_application_name ("rombrowser");
 }
