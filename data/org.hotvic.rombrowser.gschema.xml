@@ -1,9 +1,9 @@
 <schemalist>
-  <schema id="org.hotvic.rombrowser" path="/org/hotvic/rombrowser/" gettext-domain="@GETTEXT_PACKAGE@">
+  <schema id="org.hotvic.rombrowser" path="/org/hotvic/rombrowser/">
     <child name="preferences" schema="org.hotvic.rombrowser.preferences" />
     <child name="state" schema="org.hotvic.rombrowser.state" />
   </schema>
-  <schema id="org.hotvic.rombrowser.preferences" path="/org/hotvic/rombrowser/preferences/" gettext-domain="@GETTEXT_PACKAGE@">
+  <schema id="org.hotvic.rombrowser.preferences" path="/org/hotvic/rombrowser/preferences/">
     <key name="only-one-instance" type="b">
       <default l10n="messages">true</default>
       <summary>Allow running of only one instance</summary>
@@ -18,14 +18,14 @@
     <child name="emulators" schema="org.hotvic.rombrowser.preferences.emulators" />
     <child name="ui" schema="org.hotvic.rombrowser.preferences.ui" />
   </schema>
-  <schema id="org.hotvic.rombrowser.preferences.emulators" path="/org/hotvic/rombrowser/preferences/emulators/" gettext-domain="@GETTEXT_PACKAGE@">
+  <schema id="org.hotvic.rombrowser.preferences.emulators" path="/org/hotvic/rombrowser/preferences/emulators/">
   </schema>
-  <schema id="org.hotvic.rombrowser.preferences.ui" path="/org/hotvic/rombrowser/preferences/ui/" gettext-domain="@GETTEXT_PACKAGE@">
+  <schema id="org.hotvic.rombrowser.preferences.ui" path="/org/hotvic/rombrowser/preferences/ui/">
   </schema>
-  <schema id="org.hotvic.rombrowser.state" path="/org/hotvic/rombrowser/state/" gettext-domain="@GETTEXT_PACKAGE@">
+  <schema id="org.hotvic.rombrowser.state" path="/org/hotvic/rombrowser/state/">
     <child name="window" schema="org.hotvic.rombrowser.state.window" />
   </schema>
-  <schema id="org.hotvic.rombrowser.state.window" path="/org/hotvic/rombrowser/state/window/" gettext-domain="@GETTEXT_PACKAGE@">
+  <schema id="org.hotvic.rombrowser.state.window" path="/org/hotvic/rombrowser/state/window/">
     <key name="state" type="i">
       <default l10n="messages">0</default>
       <summary>Window state</summary>

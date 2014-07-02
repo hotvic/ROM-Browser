@@ -17,11 +17,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "rombrowsercmds.h"
+
+#ifndef RB_WINDOW_H
+#define RB_WINDOW_H
+
+#include <gtkmm.h>
 
 
-void _rombrowser_cmd_help_about    (GSimpleAction *action,
-                                    GtkWindow     *window,
-                                    RomBrowserApp *app)
+namespace RB
 {
+
+class Window : public Gtk::ApplicationWindow
+{
+public:
+    Window(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder>& builder);
+    virtual ~Window();
+    static Glib::RefPtr<Window> create(Application *app);
+
+protected:
+    virtual void on_dispose();
+
+    Glib::RefPtr<Gtk::Builder> m_refBuilder;
+};
+
 }
+
+#endif /* RB_WINDOW_H */

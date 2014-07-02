@@ -17,12 +17,39 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "rombrowsercmds.h"
+
+#ifndef RB_APP_H
+#define RB_APP_H
+
+#include <gtkmm.h>
 
 
-void _rombrowser_cmd_file_quit     (GSimpleAction *action,
-                                    GtkWindow     *window,
-                                    RomBrowserApp *app)
+namespace RB
 {
-  g_application_release(G_APPLICATION (app));
+
+class Application : public Gtk::Application
+{
+protected:
+    Application();
+
+public:
+    static Glib::RefPtr<Application> create();
+
+protected:
+    // Signal handlers
+    virtual void on_startup();
+    virtual void on_activate();
+
+    Glib::RefPtr<Gio::Settings> preferences;
+
+private:
+    gboolean has_app_menu();
+
+    void on_activate_preferences();
+    void on_activate_about();
+    void on_activate_quit();
+};
+
 }
+
+#endif /* RB_APP_H */

@@ -2,6 +2,6 @@
 <gresources>
   <gresource prefix="/org/hotvic/rombrowser">
     <file>ui/menu.ui</file>
-    <file>ui/rbmw.ui</file>
+    <file>ui/window.ui</file>
   </gresource>
 </gresources>

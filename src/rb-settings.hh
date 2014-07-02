@@ -17,24 +17,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __ROMBROWSER_COMMANDS_H__
-#define __ROMBROWSER_COMMANDS_H__
-#include <gio/gio.h>
-#include <gtk/gtk.h>
 
-#include "rombrowserapp.h"
-#include "rombrowsersettings.h"
+#ifndef RB_SETTINGS_HH
+#define RB_SETTINGS_HH
 
 
-G_BEGIN_DECLS
+/* key constants */
+#define RB_SETTINGS_ONE_INSTANCE            "only-one-instance"
+#define RB_SETTINGS_WINDOW_STATE            "state"
+#define RB_SETTINGS_WINDOW_SIZE             "size"
 
-void _rombrowser_cmd_help_about    (GSimpleAction  *action,
-                                    GtkWindow      *window,
-                                    RomBrowserApp  *app);
-void _rombrowser_cmd_file_quit     (GSimpleAction  *action,
-                                    GtkWindow      *window,
-                                    RomBrowserApp  *app);
 
-G_END_DECLS
-
-#endif /* __ROMBROWSER_COMMANDS_H__ */
+#endif // RB_SETTINGS_HH

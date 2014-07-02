@@ -2,7 +2,7 @@ AC_INIT([rombrowser], [0.1], [https://github.com/hotvic/ROM-Browser/issues], [ro
 AM_INIT_AUTOMAKE([-Wall -Wno-extra-portability -Wno-portability -Werror foreign])
 LT_INIT
 
-AC_PROG_CC
+AC_PROG_CXX
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS([config.h])
@@ -10,18 +10,10 @@ AC_CONFIG_HEADERS([config.h])
 dnl ============================================================================
 dnl Dependencies libraries
 dnl ============================================================================
-PKG_CHECK_MODULES(GTK,
-                  glib-2.0
-                  gio-2.0
-                  gtk+-3.0)
-
-dnl ============================================================================
-dnl gettext and intltool
-dnl ============================================================================
-IT_PROG_INTLTOOL([0.50.1])
-
-AC_SUBST([GETTEXT_PACKAGE], [rombrowser])
-AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], "$GETTEXT_PACKAGE", [Define to the gettext package name.])
+PKG_CHECK_MODULES(GTKMM,
+                  glibmm-2.4
+                  giomm-2.4
+                  gtkmm-3.0)
 
 dnl ============================================================================
 dnl directories
@@ -39,11 +31,6 @@ AC_PATH_PROG(GLIB_COMPILE_RESOURCES, glib-compile-resources)
 
 AC_CONFIG_FILES(
   Makefile
-  data/org.hotvic.rombrowser.gschema.xml
-  data/ui.gresource.xml
-  data/ui/menu.ui
-  data/ui/rbmw.ui
-  po/Makefile.in
   src/Makefile
 )
 AC_OUTPUT

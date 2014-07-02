@@ -17,21 +17,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gio/gio.h>
 
-#include "rombrowserapp.h"
+#include <gtkmm.h>
+
+#include "rb-app.hh"
 
 
 int
 main(int argc, char **argv)
 {
-  RomBrowserApp *app;
-  int status;
+    Glib::RefPtr<RB::Application> app = RB::Application::create();
+    int status;
 
-  app = rombrowser_app_new();
-  status = g_application_run(G_APPLICATION (app), argc, argv);
+    status = app->run(argc, argv);
 
-  g_object_unref(app);
-
-  return status;
+    return status;
 }
