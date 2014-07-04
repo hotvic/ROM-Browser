@@ -14,6 +14,9 @@ PKG_CHECK_MODULES(GTKMM,
                   glibmm-2.4
                   giomm-2.4
                   gtkmm-3.0)
+BOOST_REQUIRE
+BOOST_SYSTEM
+BOOST_FILESYSTEM
 
 dnl ============================================================================
 dnl directories

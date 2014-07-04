@@ -19,25 +19,38 @@
 
 
 #include "rb-app.hh"
+#include "rb-i18n.h"
 
 #include "rb-window.hh"
 
+#include <boost/filesystem.hpp>
+
 
 using namespace RB;
+namespace fs = boost::filesystem;
 
 Window::Window(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder>& builder)
 : Gtk::ApplicationWindow(cobject)
 , m_refBuilder(builder)
 {
     Glib::RefPtr<Gtk::Builder> mbuilder;
-    Glib::RefPtr<Gio::MenuModel> model;
-    Gtk::MenuButton *gears;
 
     mbuilder = Gtk::Builder::create_from_resource("/org/hotvic/rombrowser/ui/menu.ui");
-    model = Glib::RefPtr<Gio::MenuModel>::cast_static(mbuilder->get_object("gearsmenu"));
 
+    Glib::RefPtr<Gio::MenuModel> model = Glib::RefPtr<Gio::MenuModel>::cast_static(mbuilder->get_object("gearsmenu"));
+
+    Gtk::MenuButton *gears;
     m_refBuilder->get_widget("gears", gears);
     gears->set_menu_model(model);
+
+    /* Widgets */
+    m_refBuilder->get_widget("romsTreeView", m_TreeView);
+
+    m_TreeView->append_column(_("Name"), m_Columns.m_col_name);
+    m_TreeView->append_column(_("File"), m_Columns.m_col_path);
+
+    m_RomList = Gtk::TreeStore::create(m_Columns);
+    m_TreeView->set_model(m_RomList);
 }
 
 Window::~Window()

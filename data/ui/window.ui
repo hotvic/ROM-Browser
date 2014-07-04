@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="3.12"/>
-  <object class="GtkListStore" id="romsListStore">
-    <columns>
-      <!-- column-name name -->
-      <column type="guchar"/>
-      <!-- column-name fileloc -->
-      <column type="gchar"/>
-      <!-- column-name tooltip -->
-      <column type="gchar"/>
-    </columns>
-  </object>
+  <requires lib="gtk+" version="3.10"/>
   <object class="GtkApplicationWindow" id="RomBrowserAppWindow">
     <property name="title" translatable="yes">ROM Browser</property>
     <property name="icon_name">applications-games</property>
@@ -89,28 +79,6 @@
         </child>
         <child>
           <object class="GtkTreeView" id="romsTreeView">
-            <property name="model">romsListStore</property>
-            <property name="search_column">1</property>
-            <property name="tooltip_column">3</property>
-            <child>
-              <object class="GtkTreeViewColumn" id="column-name">
-                <property name="title" translatable="yes">Name</property>
-                <child>
-                  <object class="GtkCellRendererText" id="col-name-render"></object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkTreeViewColumn" id="column-fileloc">
-                <property name="title" translatable="yes">File</property>
-                <child>
-                  <object class="GtkCellRendererText" id="col-fileloc-render"></object>
-                </child>
-              </object>
-            </child>
-            <child internal-child="selection">
-              <object class="GtkTreeSelection" id="romsTreeView-selection" />
-            </child>
           </object>
         </child>
       </object>

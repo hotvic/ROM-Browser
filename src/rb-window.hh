@@ -37,7 +37,21 @@ public:
 protected:
     virtual void on_dispose();
 
+    class ModelColumns : public Gtk::TreeModel::ColumnRecord
+    {
+    public:
+        Gtk::TreeModelColumn<Glib::ustring> m_col_name;
+        Gtk::TreeModelColumn<Glib::ustring> m_col_path;
+        Gtk::TreeModelColumn<Glib::ustring> m_col_tooltip;
+
+        ModelColumns()
+        { add(m_col_name); add(m_col_path); add(m_col_tooltip); }
+    };
+
+    ModelColumns m_Columns;
     Glib::RefPtr<Gtk::Builder> m_refBuilder;
+    Glib::RefPtr<Gtk::TreeStore> m_RomList;
+    Gtk::TreeView *m_TreeView;
 };
 
 }
